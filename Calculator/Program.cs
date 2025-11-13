@@ -1,6 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿using CalculatorLibrary;
+using System.Text.RegularExpressions;
 
 bool endApp = false;
+Calculator calculator = new();
 
 // Display title as the C# console calculator app.
 Console.WriteLine("Console Calculator in C#\r");
@@ -49,7 +51,7 @@ while (!endApp)
     {
         try
         {
-            double result = Calculator.DoOperation(cleanNum1, cleanNum2, op);
+            double result = calculator.DoOperation(cleanNum1, cleanNum2, op);
             if (double.IsNaN(result))
             {
                 Console.WriteLine("This operation will result in a mathematical error.\n");
@@ -70,4 +72,6 @@ while (!endApp)
     Console.WriteLine("\n"); // Friendly linespacing.
 }
 
+// Add call to close the JSON writer before return
+calculator.Finish();
 return;
