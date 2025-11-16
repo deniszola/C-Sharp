@@ -43,7 +43,7 @@ while (!endApp)
     string? op = Console.ReadLine();
 
     // Validate input is not null, and matches the pattern
-    if (op == null || !Regex.IsMatch(op, "[a|s|m|d]"))
+    if (op == null || !ValidOperatorRegex().IsMatch(op))
     {
         Console.WriteLine("Error: Unrecognized input.");
     }
@@ -75,3 +75,9 @@ while (!endApp)
 // Add call to close the JSON writer before return
 calculator.Finish();
 return;
+
+partial class Program
+{
+    [GeneratedRegex("[a|s|m|d]")]
+    private static partial Regex ValidOperatorRegex();
+}
